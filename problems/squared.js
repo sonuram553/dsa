@@ -1,5 +1,5 @@
-/* 
-Directions
+/* Direction
+
 Write a function - squared, that takes two arrays as argument. The function should return
 true if every value in the array has its corresponding value squared in second array. 
 The frequency of values must be same.
@@ -8,6 +8,7 @@ Examples
 squared([1, 2, 3], [1, 9, 4])   return true
 squared([1, 2, 3], [1, 9])      return false
 squared([1, 2, 1], [1, 4, 4])   return false
+
 */
 
 

@@ -1,4 +1,4 @@
-/* Directions
+/* Direction
 
 Write function - sumZero which accepts a sorted array of integers. The function should
 return an array of first two numbers whose sum is zero otherwise returns undefined.
