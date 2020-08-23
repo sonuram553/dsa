@@ -1,13 +1,12 @@
 /* function fib(num) {
-  if (num === 0 || num === 1) return 1;
-
+  if (num < 2) return 1;
   return fib(num - 1) + fib(num - 2);
 } */
 
 // With caching
 const cache = {};
 function fib(num) {
-  if (num === 0 || num === 1) return 1;
+  if (num < 2) return 1;
   if (cache[num]) return cache[num];
 
   const result = fib(num - 1) + fib(num - 2);
@@ -15,4 +14,4 @@ function fib(num) {
   return result;
 }
 
-console.log(fib(5));
+console.log(fib(6));
