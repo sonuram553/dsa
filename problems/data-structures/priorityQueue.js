@@ -75,7 +75,9 @@ class PriorityQueue {
   }
 }
 
-const queue = new PriorityQueue();
+module.exports = PriorityQueue;
+
+/* const queue = new PriorityQueue();
 
 queue.enqueue("", 10);
 queue.enqueue("", 5);
@@ -85,4 +87,4 @@ queue.enqueue("", 1);
 console.log(queue.dequeue());
 console.log(queue.dequeue());
 
-console.log(queue.values);
+console.log(queue.values); */
