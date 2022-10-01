@@ -2,10 +2,12 @@
 // Use Leetcode for Testing
 
 const gcd = require("../../utils/gcd");
+const reverseArray = require("../../utils/reverse-array");
 
 // Time Complexity: O(N*d)
 // Space Complexity: O(1)
 function rotate(arr, d, n) {
+  // In case the rotating factor is greater than n
   d = d % n;
 
   for (let i = 0; i < d; i++) {
@@ -43,4 +45,14 @@ function rotate(arr, d, n) {
   }
 
   return arr;
+}
+
+// Reversal Algorithm
+// Time Complexity O(n)
+// Space Complexity O(1)
+function rotate(arr, d, n) {
+  d = d % n;
+  reverseArray(arr, 0, d - 1);
+  reverseArray(arr, d, n - 1);
+  reverseArray(arr, 0, n - 1);
 }
