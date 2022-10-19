@@ -1,4 +1,6 @@
 // Find minimum in the rotated sorted array
+// Using Binary Search
+// Time Complexity: O(log N)
 
 export default function findIndexOfMin(arr) {
   const n = arr.length;
