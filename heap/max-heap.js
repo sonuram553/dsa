@@ -1,7 +1,14 @@
 import swap from "../utils/swap.js";
 
 class MaxHeap {
-  arr = [];
+  constructor(arr = []) {
+    this.arr = [];
+    this.initialize(arr);
+  }
+
+  initialize(arr) {
+    for (const num of arr) this.insertKey(num);
+  }
 
   get size() {
     return this.arr.length;
@@ -34,15 +41,23 @@ class MaxHeap {
   // Increases value of key at
   // index 'i' to newValue.
   increaseKey(i, newKey) {
-    if (newKey <= arr[i])
+    if (newKey < this.arr[i])
       throw Error("New key is not greater than the old one!");
 
-    arr[i] = newKey;
+    this.arr[i] = newKey;
 
     while (i !== 0 && this.arr[parent(i)] < this.arr[i]) {
       swap(this.arr, parent(i), i);
       i = parent(i);
     }
+  }
+
+  decreaseKey(i, newKey) {
+    if (newKey > this.arr[i])
+      throw Error("New key is not smaller than the old one!");
+
+    this.arr[i] = newKey;
+    this.heapify(i);
   }
 
   removeMax() {
@@ -83,3 +98,10 @@ function leftChild(i) {
 function rightChild(i) {
   return 2 * i + 2;
 }
+
+// Tester
+(function () {
+  const arr = [10, 20, 1, 30, 40];
+  const heap = new MaxHeap(arr);
+  console.log(heap);
+})();
