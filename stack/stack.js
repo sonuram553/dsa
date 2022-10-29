@@ -39,3 +39,5 @@ class Stack {
     return this.top?.value;
   }
 }
+
+export default Stack;
