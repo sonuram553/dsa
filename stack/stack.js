@@ -30,7 +30,7 @@ class Stack {
 
     const node = this.top;
     this.top = node.prev;
-    this.size--;
+    this._size--;
 
     return node.value;
   }

@@ -1,3 +1,5 @@
+import Stack from "../stack/stack.js";
+
 class Graph {
   adjacencyList = {};
 
@@ -53,6 +55,27 @@ class Graph {
     }
 
     dfs(vertex);
+    return result;
+  }
+
+  depthFirstIterative(vertex) {
+    if (!vertex) return;
+
+    const result = [];
+    const visited = new Set();
+    const stack = new Stack();
+    stack.push(vertex);
+
+    while (stack.size()) {
+      const vertex = stack.pop();
+
+      if (!visited.has(vertex)) {
+        this.adjacencyList[vertex].forEach((v) => stack.push(v));
+        result.push(vertex);
+        visited.add(vertex);
+      }
+    }
+
     return result;
   }
 }
