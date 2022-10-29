@@ -35,4 +35,23 @@ class Graph {
       delete this.adjacencyList[vertex];
     }
   }
+
+  depthFirstRecursive = (vertex) => {
+    if (!vertex) return;
+
+    const result = [];
+    const visited = new Set();
+
+    function dfs(vertex) {
+      result.push(vertex);
+      visited.add(vertex);
+
+      this.adjacencyList[vertex].forEach((v) => {
+        if (!visited.has(v)) dfs(v);
+      });
+    }
+
+    dfs(vertex);
+    return result;
+  };
 }
