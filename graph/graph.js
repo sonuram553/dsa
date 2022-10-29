@@ -1,3 +1,4 @@
+import Queue from "../queue/queue.js";
 import Stack from "../stack/stack.js";
 
 class Graph {
@@ -71,6 +72,27 @@ class Graph {
 
       if (!visited.has(vertex)) {
         this.adjacencyList[vertex].forEach((v) => stack.push(v));
+        result.push(vertex);
+        visited.add(vertex);
+      }
+    }
+
+    return result;
+  }
+
+  breadthFirstIterative(vertex) {
+    if (!vertex) return;
+
+    const result = [];
+    const visited = new Set();
+    const queue = new Queue();
+    queue.add(vertex);
+
+    while (queue.size()) {
+      const vertex = queue.delete();
+
+      if (!visited.has(vertex)) {
+        this.adjacencyList[vertex].forEach((v) => queue.add(v));
         result.push(vertex);
         visited.add(vertex);
       }

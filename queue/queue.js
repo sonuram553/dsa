@@ -33,8 +33,9 @@ class Queue {
 
     if (this._size === 1) this.tail = null;
     this.head = node.next;
-
     this._size--;
+
+    return node.value;
   }
 }
 
