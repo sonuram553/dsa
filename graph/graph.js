@@ -8,21 +8,21 @@ class Graph {
     if (!(vertex in this.adjacencyList)) this.adjacencyList[vertex] = [];
   }
 
-  addEdge(vertex1, vertex2) {
+  addEdge(vertex1, vertex2, weight = 0) {
     if (vertex1 in this.adjacencyList && vertex2 in this.adjacencyList) {
-      this.adjacencyList[vertex1].push(vertex2);
-      this.adjacencyList[vertex2].push(vertex1);
+      this.adjacencyList[vertex1].push({ vertex: vertex2, weight });
+      this.adjacencyList[vertex2].push({ vertex: vertex1, weight });
     }
   }
 
   removeEdge(vertex1, vertex2) {
     if (vertex1 in this.adjacencyList && vertex2 in this.adjacencyList) {
       this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
-        (vertex) => vertex !== vertex2
+        ({ vertex }) => vertex !== vertex2
       );
 
       this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
-        (vertex) => vertex !== vertex1
+        ({ vertex }) => vertex !== vertex1
       );
     }
   }
@@ -31,7 +31,7 @@ class Graph {
     if (vertex in this.adjacencyList) {
       for (const v of this.adjacencyList[vertex]) {
         this.adjacencyList[v] = this.adjacencyList[v].filter(
-          (v) => v !== vertex
+          (node) => node.vertex !== vertex
         );
       }
 
@@ -50,8 +50,8 @@ class Graph {
       result.push(vertex);
       visited.add(vertex);
 
-      adjacencyList[vertex].forEach((v) => {
-        if (!visited.has(v)) dfs(v);
+      adjacencyList[vertex].forEach(({ vertex }) => {
+        if (!visited.has(vertex)) dfs(vertex);
       });
     }
 
@@ -71,7 +71,7 @@ class Graph {
       const vertex = stack.pop();
 
       if (!visited.has(vertex)) {
-        this.adjacencyList[vertex].forEach((v) => stack.push(v));
+        this.adjacencyList[vertex].forEach(({ vertex }) => stack.push(vertex));
         result.push(vertex);
         visited.add(vertex);
       }
@@ -92,7 +92,7 @@ class Graph {
       const vertex = queue.delete();
 
       if (!visited.has(vertex)) {
-        this.adjacencyList[vertex].forEach((v) => queue.add(v));
+        this.adjacencyList[vertex].forEach(({ vertex }) => queue.add(vertex));
         result.push(vertex);
         visited.add(vertex);
       }
