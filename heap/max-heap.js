@@ -1,4 +1,6 @@
 import swap from "../utils/swap.js";
+import heapifyIterative from "./heapify/iterative.js";
+import { parent, leftChild, rightChild } from "./utils.js";
 
 class MaxHeap {
   constructor(arr = []) {
@@ -55,7 +57,7 @@ class MaxHeap {
       throw Error("New key is not smaller than the old one!");
 
     this.arr[i] = newKey;
-    this.heapifyIterative(i);
+    heapifyIterative(this.arr, i, compare);
   }
 
   extractMax() {
@@ -65,7 +67,7 @@ class MaxHeap {
     const max = this.arr[0];
     this.arr[0] = this.arr.pop();
 
-    this.heapifyIterative(0);
+    heapifyIterative(this.arr, 0, compare);
     return max;
   }
 
@@ -83,36 +85,9 @@ class MaxHeap {
       this.heapifyRecursive(largest);
     }
   }
-
-  heapifyIterative(i) {
-    let largest = i;
-
-    while (true) {
-      const left = leftChild(i);
-      const right = rightChild(i);
-
-      if (left < this.size && this.arr[left] > this.arr[i]) largest = left;
-      if (right < this.size && this.arr[right] > this.arr[largest])
-        largest = right;
-
-      if (largest === i) break;
-
-      swap(this.arr, largest, i);
-      i = largest;
-    }
-  }
 }
 
-function parent(i) {
-  return Math.floor(i - 1 / 2);
+function compare(left, right) {
+  return left > right;
 }
-
-function leftChild(i) {
-  return 2 * i + 1;
-}
-
-function rightChild(i) {
-  return 2 * i + 2;
-}
-
 export default MaxHeap;
