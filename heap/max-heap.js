@@ -19,13 +19,8 @@ class MaxHeap {
   }
 
   insertKey(key) {
-    let i = this.arr.length;
     this.arr.push(key);
-
-    while (i !== 0 && this.arr[parent(i)] < this.arr[i]) {
-      swap(this.arr, parent(i), i);
-      i = parent(i);
-    }
+    this.bubbleUp(this.arr.length - 1);
   }
 
   // In order to delete a key
@@ -45,7 +40,10 @@ class MaxHeap {
       throw Error("New key is not greater than the old one!");
 
     this.arr[i] = newKey;
+    this.bubbleUp(i);
+  }
 
+  bubbleUp(i) {
     while (i !== 0 && this.arr[parent(i)] < this.arr[i]) {
       swap(this.arr, parent(i), i);
       i = parent(i);
@@ -99,9 +97,4 @@ function rightChild(i) {
   return 2 * i + 2;
 }
 
-// Tester
-(function () {
-  const arr = [10, 20, 1, 30, 40];
-  const heap = new MaxHeap(arr);
-  console.log(heap);
-})();
+export default MaxHeap;

@@ -1,1 +1,1 @@
-import "./graph/test.js"
+import "./heap/test.js";
