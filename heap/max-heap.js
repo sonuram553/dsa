@@ -55,21 +55,21 @@ class MaxHeap {
       throw Error("New key is not smaller than the old one!");
 
     this.arr[i] = newKey;
-    this.heapify(i);
+    this.heapifyIterative(i);
   }
 
-  removeMax() {
+  extractMax() {
     if (this.size === 0) return;
     if (this.size === 1) return this.arr.pop();
 
     const max = this.arr[0];
     this.arr[0] = this.arr.pop();
 
-    this.heapify(0);
+    this.heapifyIterative(0);
     return max;
   }
 
-  heapify(i) {
+  heapifyRecursive(i) {
     let left = leftChild(i);
     let right = rightChild(i);
     let largest = i;
@@ -80,7 +80,25 @@ class MaxHeap {
 
     if (largest !== i) {
       swap(this.arr, largest, i);
-      this.heapify(largest);
+      this.heapifyRecursive(largest);
+    }
+  }
+
+  heapifyIterative(i) {
+    let largest = i;
+
+    while (true) {
+      const left = leftChild(i);
+      const right = rightChild(i);
+
+      if (left < this.size && this.arr[left] > this.arr[i]) largest = left;
+      if (right < this.size && this.arr[right] > this.arr[largest])
+        largest = right;
+
+      if (largest === i) break;
+
+      swap(this.arr, largest, i);
+      i = largest;
     }
   }
 }

@@ -6,3 +6,7 @@ console.log(heap);
 
 heap.increaseKey(4, 50);
 console.log(heap);
+
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap);
