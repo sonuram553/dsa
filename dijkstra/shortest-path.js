@@ -1,5 +1,4 @@
 import PriorityQueue from "../heap/priority-queue/priority-queue.js";
-import reverseArray from "../utils/reverse-array.js";
 
 // Dijkstra's Shortest Path Algorithm
 
@@ -48,7 +47,7 @@ function buildPath(previous, endVertex) {
     result.push(currentVertex);
   }
 
-  return reverseArray(result);
+  return result.reverse();
 }
 
 export default shortestPath;
