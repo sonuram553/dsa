@@ -1,3 +1,5 @@
+import heapifyIterative from "../heap/heapify/iterative";
+
 class Node {
   constructor(value, priority) {
     this.value = value;
@@ -19,7 +21,7 @@ class PriorityQueue {
   enqueue(value, priority) {
     const node = new Node(value, priority);
     this.arr.push(node);
-    this.bubbleUpI(this.arr.length - 1);
+    this.bubbleUp(this.arr.length - 1);
   }
 
   dequeue() {
@@ -29,7 +31,7 @@ class PriorityQueue {
     const priorNode = this.arr[0];
     this.arr[0] = this.arr.pop();
 
-    this.heapifyIterative(0);
+    heapifyIterative(this.arr, 0, compare);
     return priorNode;
   }
 
@@ -39,24 +41,10 @@ class PriorityQueue {
       i = parent(i);
     }
   }
+}
 
-  heapifyIterative(i) {
-    let largest = i;
-
-    while (true) {
-      const left = leftChild(i);
-      const right = rightChild(i);
-
-      if (left < this.size && this.arr[left] > this.arr[i]) largest = left;
-      if (right < this.size && this.arr[right] > this.arr[largest])
-        largest = right;
-
-      if (largest === i) break;
-
-      swap(this.arr, largest, i);
-      i = largest;
-    }
-  }
+function compare(left, right) {
+  return left.priority < right.priority;
 }
 
 export default PriorityQueue;
