@@ -1,4 +1,4 @@
-import heapifyIterative from "../heap/heapify/iterative";
+import heapifyIterative from "../heapify/iterative";
 
 class Node {
   constructor(value, priority) {

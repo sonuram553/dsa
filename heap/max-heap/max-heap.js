@@ -1,6 +1,6 @@
-import swap from "../utils/swap.js";
-import heapifyIterative from "./heapify/iterative.js";
-import { parent, leftChild, rightChild } from "./utils.js";
+import swap from "../../utils/swap.js";
+import heapifyIterative from "../heapify/iterative.js";
+import { parent, leftChild, rightChild } from "../utils.js";
 
 class MaxHeap {
   constructor(arr = []) {

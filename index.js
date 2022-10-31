@@ -1,1 +1,1 @@
-import "./heap/test.js";
+import "./heap/max-heap/test.js";
