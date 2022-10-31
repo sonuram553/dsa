@@ -4,6 +4,20 @@ import Stack from "../stack/stack.js";
 class Graph {
   adjacencyList = {};
 
+  // Returns array of all the vertices.
+  vertices() {
+    return Object.keys(this.adjacencyList);
+  }
+
+  // Returns all the neighbors of a vertex.
+  neighbors(vertex) {
+    return this.adjacencyList[vertex] || [];
+  }
+
+  hasVertex(vertex) {
+    return vertex in this.adjacencyList;
+  }
+
   addVertex(vertex) {
     if (!(vertex in this.adjacencyList)) this.adjacencyList[vertex] = [];
   }
