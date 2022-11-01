@@ -1,4 +1,6 @@
-import heapifyIterative from "../heapify/iterative";
+import { parent } from "../utils.js";
+import swap from "../../utils/swap.js";
+import heapifyIterative from "../heapify/iterative.js";
 
 class Node {
   constructor(value, priority) {
