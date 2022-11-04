@@ -9,7 +9,7 @@ class Node {
 class BST {
   root = null;
 
-  insert(value) {
+  insertIterative(value) {
     const newNode = new Node(value);
 
     if (!this.root) {
@@ -19,25 +19,35 @@ class BST {
     }
 
     // The tree is not empty
-    let current = this.root;
+    let currentNode = this.root;
     while (true) {
-      if (value > current.value) {
+      if (value > currentNode.value) {
         // Value is greater than the current nodes value
 
-        if (current.right) current = current.right;
+        if (currentNode.right) currentNode = currentNode.right;
         else {
-          current.right = newNode;
+          currentNode.right = newNode;
           break;
         }
       } else {
         // Value is less than or equal to the current nodes value
 
-        if (current.left) current = current.left;
+        if (currentNode.left) currentNode = currentNode.left;
         else {
-          current.left = newNode;
+          currentNode.left = newNode;
           break;
         }
       }
+    }
+  }
+
+  insertRecursive(value, currentNode = this.root) {
+    if (value > currentNode.value) {
+      if (currentNode.right) this.insertRecursive(value, currentNode.right);
+      else currentNode.right = new Node(value);
+    } else {
+      if (currentNode.left) this.insertRecursive(value, currentNode.left);
+      else currentNode.left = new Node(value);
     }
   }
 }
