@@ -42,6 +42,10 @@ class BST {
   }
 
   insertRecursive(value, currentNode = this.root) {
+    // If the tree is empty
+    if (!currentNode) currentNode = new Node(value);
+
+    // Tree is not empty
     if (value > currentNode.value) {
       if (currentNode.right) this.insertRecursive(value, currentNode.right);
       else currentNode.right = new Node(value);
