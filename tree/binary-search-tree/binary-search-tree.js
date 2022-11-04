@@ -57,6 +57,29 @@ class BST {
       else currentNode.left = new Node(value);
     }
   }
+
+  findIterative(value) {
+    let currentNode = this.root;
+
+    while (currentNode) {
+      if (currentNode.value === value) return true;
+      if (value > currentNode.value) currentNode = currentNode.right;
+      else currentNode = currentNode.left;
+    }
+
+    return false;
+  }
+
+  findRecursive(value, currentNode = this.root) {
+    if (!currentNode) return false;
+
+    if (currentNode.value === value) return true;
+
+    if (value > currentNode.value)
+      return this.findRecursive(value, currentNode.right);
+
+    return this.findRecursive(value, currentNode.left);
+  }
 }
 
 export default BST;
