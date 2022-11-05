@@ -13,4 +13,10 @@ let values = bst.breadthFirstTraversal();
 console.log(values);
 
 values = bst.depthFirstPreOrder();
-console.log(values);
+console.log("Pre Order:", values);
+
+values = bst.depthFirstInOrder();
+console.log("In Order:", values);
+
+values = bst.depthFirstPostOrder();
+console.log("Post Order:", values);

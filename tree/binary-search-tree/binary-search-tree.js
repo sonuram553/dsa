@@ -114,6 +114,34 @@ class BST {
     traverse(this.root);
     return result;
   }
+
+  depthFirstInOrder() {
+    const result = [];
+
+    function traverse(node) {
+      if (!node) return;
+      traverse(node.left);
+      result.push(node.value);
+      traverse(node.right);
+    }
+
+    traverse(this.root);
+    return result;
+  }
+
+  depthFirstPostOrder() {
+    const result = [];
+
+    function traverse(node) {
+      if (!node) return;
+      traverse(node.left);
+      traverse(node.right);
+      result.push(node.value);
+    }
+
+    traverse(this.root);
+    return result;
+  }
 }
 
 export default BST;
