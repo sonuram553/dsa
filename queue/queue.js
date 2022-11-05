@@ -10,11 +10,11 @@ class Queue {
   tail = null;
   _size = 0;
 
-  size() {
+  get size() {
     return this._size;
   }
 
-  add(value) {
+  enqueue(value) {
     const node = new Node(value);
 
     if (!this.head) this.head = this.tail = node;
@@ -26,7 +26,7 @@ class Queue {
     return ++this._size;
   }
 
-  delete() {
+  dequeue() {
     if (!this.head) return;
 
     const node = this.head;

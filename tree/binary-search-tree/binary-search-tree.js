@@ -1,3 +1,5 @@
+import Queue from "../../queue/queue.js";
+
 class Node {
   constructor(value) {
     this.value = value;
@@ -79,6 +81,24 @@ class BST {
       return this.findRecursive(value, currentNode.right);
 
     return this.findRecursive(value, currentNode.left);
+  }
+
+  breadthFirstTraversal() {
+    if (!this.root) return [];
+
+    const result = [];
+    const queue = new Queue();
+    queue.enqueue(this.root);
+
+    while (queue.size) {
+      const node = queue.dequeue();
+      result.push(node.value);
+
+      if (node.left) queue.enqueue(node.left);
+      if (node.right) queue.enqueue(node.right);
+    }
+
+    return result;
   }
 }
 
