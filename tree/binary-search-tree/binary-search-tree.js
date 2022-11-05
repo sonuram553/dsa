@@ -100,6 +100,20 @@ class BST {
 
     return result;
   }
+
+  depthFirstPreOrder() {
+    const result = [];
+
+    function traverse(node) {
+      if (!node) return;
+      result.push(node.value);
+      traverse(node.left);
+      traverse(node.right);
+    }
+
+    traverse(this.root);
+    return result;
+  }
 }
 
 export default BST;
