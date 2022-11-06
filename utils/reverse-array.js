@@ -1,4 +1,4 @@
-function reverseArray(arr, start, end) {
+function reverseArray(arr, start = 0, end = arr.length - 1) {
   while (start < end) {
     const left = arr[start];
     arr[start] = arr[end];
@@ -11,4 +11,4 @@ function reverseArray(arr, start, end) {
   return arr;
 }
 
-export default reverseArray
+export default reverseArray;
