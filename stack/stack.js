@@ -9,7 +9,7 @@ class Stack {
   top = null;
   _size = 0;
 
-  size() {
+  get size() {
     return this._size;
   }
 
