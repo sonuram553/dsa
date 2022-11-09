@@ -9,7 +9,7 @@ class MaxHeap {
   }
 
   initialize(arr) {
-    for (const num of arr) this.insertKey(num);
+    for (const num of arr) this.insert(num);
   }
 
   get size() {
@@ -20,7 +20,7 @@ class MaxHeap {
     return this.arr[0];
   }
 
-  insertKey(key) {
+  insert(key) {
     this.arr.push(key);
     this.bubbleUp(this.arr.length - 1);
   }
@@ -46,7 +46,7 @@ class MaxHeap {
   }
 
   bubbleUp(i) {
-    while (i !== 0 && this.arr[parent(i)] < this.arr[i]) {
+    while (i !== 0 && compare(this.arr[i], this.arr[parent(i)])) {
       swap(this.arr, parent(i), i);
       i = parent(i);
     }
