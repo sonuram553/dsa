@@ -146,72 +146,7 @@ class BST {
     return result;
   }
 
-  // Traversal - Iterative
-
-  depthFirstPreOrderIterative() {
-    const result = [];
-    const stack = new Stack();
-
-    this.root && stack.push(this.root);
-
-    while (stack.size) {
-      const node = stack.pop();
-
-      result.push(node.value);
-      node.right && stack.push(node.right);
-      node.left && stack.push(node.left);
-    }
-
-    return result;
-  }
-
-  depthFirstInOrderIterative() {
-    const result = [];
-    const stack = new Stack();
-    let current = this.root;
-
-    while (true) {
-      if (current) {
-        stack.push(current);
-        current = current.left;
-      } else if (stack.size) {
-        const node = stack.pop();
-        result.push(node.value);
-        current = node.right;
-      } else break;
-    }
-
-    return result;
-  }
-
-  // https://www.geeksforgeeks.org/iterative-postorder-traversal-using-stack/
-  depthFirstPostOrderIterative(root = this.root) {
-    const result = [];
-    const stack = new Stack();
-
-    while (true) {
-      while (root) {
-        root.right && stack.push(root.right);
-        stack.push(root);
-        root = root.left;
-      }
-
-      if (stack.size) {
-        root = stack.pop();
-
-        if (root.right && root.right === stack.peek()) {
-          const node = stack.pop();
-          stack.push(root);
-          root = node;
-        } else {
-          result.push(root.val);
-          root = null;
-        }
-      } else break;
-    }
-
-    return result;
-  }
+ 
 }
 
 export default BST;
