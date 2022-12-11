@@ -1,5 +1,4 @@
-import { parent } from "../utils.js";
-import swap from "../../utils/swap.js";
+import { bubbleUp } from "../utils.js";
 import heapifyIterative from "../heapify/iterative.js";
 
 class MaxHeap {
@@ -22,14 +21,7 @@ class MaxHeap {
 
   insert(key) {
     this.arr.push(key);
-    this.bubbleUp(this.arr.length - 1);
-  }
-
-  bubbleUp(i) {
-    while (i !== 0 && compare(this.arr[i], this.arr[parent(i)])) {
-      swap(this.arr, parent(i), i);
-      i = parent(i);
-    }
+    bubbleUp(this.arr, this.arr.length - 1, compare);
   }
 
   extractMax() {
