@@ -8,12 +8,12 @@ class MaxHeap {
     this.initialize(arr);
   }
 
-  initialize(arr) {
-    for (const num of arr) this.insert(num);
-  }
-
   get size() {
     return this.arr.length;
+  }
+
+  initialize(arr) {
+    for (const item of arr) this.insert(item);
   }
 
   getMax() {
@@ -25,39 +25,11 @@ class MaxHeap {
     this.bubbleUp(this.arr.length - 1);
   }
 
-  // In order to delete a key
-  // at a given index i.
-  deleteKey(i) {
-    // It increases the value of the key
-    // to MAX Value and then removes
-    // the maximum value.
-    increaseKey(i, Number.MAX_VALUE);
-    removeMax();
-  }
-
-  // Increases value of key at
-  // index 'i' to newValue.
-  increaseKey(i, newKey) {
-    if (newKey < this.arr[i])
-      throw Error("New key is not greater than the old one!");
-
-    this.arr[i] = newKey;
-    this.bubbleUp(i);
-  }
-
   bubbleUp(i) {
     while (i !== 0 && compare(this.arr[i], this.arr[parent(i)])) {
       swap(this.arr, parent(i), i);
       i = parent(i);
     }
-  }
-
-  decreaseKey(i, newKey) {
-    if (newKey > this.arr[i])
-      throw Error("New key is not smaller than the old one!");
-
-    this.arr[i] = newKey;
-    heapifyIterative(this.arr, i, compare);
   }
 
   extractMax() {
