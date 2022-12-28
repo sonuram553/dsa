@@ -4,7 +4,7 @@ import compareNums from "../utils/compare-nums.js";
 function findPivot(arr, start, end, compareFn) {
   let pivotIndex = start;
 
-  for (let i = start; i <= end; i++) {
+  for (let i = start + 1; i <= end; i++) {
     if (compareFn(arr[start], arr[i])) {
       pivotIndex++;
       swap(arr, i, pivotIndex);
@@ -21,7 +21,7 @@ function quickSort(
   end = arr.length - 1,
   compareFn = compareNums
 ) {
-  if (start > end) return;
+  if (start >= end) return;
 
   const pivot = findPivot(arr, start, end, compareFn);
   quickSort(arr, start, pivot - 1, compareFn);

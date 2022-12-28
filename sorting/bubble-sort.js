@@ -7,7 +7,7 @@ function bubbleSort(arr) {
   do {
     swapped = false;
 
-    for (let i = 0; i <= indexOfLastUnsortedItem; i++) {
+    for (let i = 0; i < indexOfLastUnsortedItem; i++) {
       if (arr[i] > arr[i + 1]) {
         swap(arr, i, i + 1);
         swapped = true;
