@@ -9,7 +9,7 @@ function heapifyIterative(arr, parentIndex, compareFn) {
     const leftIndex = leftChild(parentIndex);
     const rightIndex = rightChild(parentIndex);
 
-    if (leftIndex < size && compareFn(arr[leftIndex], arr[parentIndex]))
+    if (leftIndex < size && compareFn(arr[leftIndex], arr[prior]))
       prior = leftIndex;
 
     if (rightIndex < size && compareFn(arr[rightIndex], arr[prior]))

@@ -36,8 +36,8 @@ class MaxHeap {
   }
 }
 
-function compare(left, right) {
-  return left > right;
+function compare(child, parent) {
+  return child > parent;
 }
 
 export default MaxHeap;
