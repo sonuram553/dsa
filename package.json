@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "esbuild index.js --bundle --outfile=public.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/sonuram553/dsa/issues"
   },
-  "homepage": "https://github.com/sonuram553/dsa#readme"
+  "homepage": "https://github.com/sonuram553/dsa#readme",
+  "devDependencies": {
+    "esbuild": "0.18.4"
+  }
 }
