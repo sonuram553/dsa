@@ -1,7 +1,7 @@
 import swap from "../utils/swap.js";
 
 function parent(i) {
-  return Math.floor(i - 1 / 2);
+  return Math.floor((i - 1) / 2);
 }
 
 function leftChild(i) {
